@@ -83,11 +83,11 @@ class XlsExchange {
             ],
             [
                 'name' => 'Кол-во',
-                'value' => function ($item): string { return $item['item']['name']; },
+                'value' => function ($item): string { return $item['quantity']; },
             ],
             [
                 'name' => 'Сумма',
-                'value' => function ($item): string { return $item['quantity'] * $item['price']; },
+                'value' => function ($item): string { return $item['amount']; },
             ],
         ];
 
@@ -118,7 +118,7 @@ class XlsExchange {
     {
         $path = $this->path_to_output_xlsx_file;
         $outputPath = $this->ftp_dir . DIRECTORY_SEPARATOR . $path;
-        $connection = ftp_connect($this->ftp_host, 21, 3) or die("Can't connect to FTP server." . PHP_EOL);
+        $connection = ftp_connect($this->ftp_host) or die("Can't connect to FTP server." . PHP_EOL);
 
         try {
             $checkCredentials = @ftp_login($connection, $this->ftp_login, $this->ftp_password);
