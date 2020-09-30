@@ -64,7 +64,7 @@ class XlsExchange {
             }
         }
 
-        return json_decode($input, true);
+        return $data;
     }
 
     protected function storeXlsx(array $data): void {
